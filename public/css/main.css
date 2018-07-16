@@ -1,0 +1,73 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.top-bar {
+    width: 100%;
+    padding: 30px;
+    background: #2f3640;
+    border-left: #eb4d4b solid 5px;
+}
+
+.topBar-text {
+    color: white;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+}
+
+.todo-item {
+    width: 100%;
+    padding: 20px;
+    background: white;
+    font-family: 'Gaegu', cursive;
+    font-size: 30px;
+    transition: 0.3s;
+}
+
+.todo-item:nth-child(2n) {
+    background: #dff9fb;
+    border-left: #eb4d4b 15px solid;
+}
+
+.button-pane {
+    float: right;
+    transition: 0.3s;
+}
+
+.edit-pane, .delete-pane {
+    transition: 0.3s;
+}
+
+.edit-pane:hover, .delete-pane:hover {
+    cursor: pointer;
+    color: #eb4d4b;
+}
+
+.input-box {
+    width: 90%;
+    padding: 10px;
+    border: none;
+    background: white;
+    color: black;
+    font-family: 'Gaegu', cursive;
+    font-size: 30px;
+}
+
+.input-box:nth-child(2n) {
+    background: #dff9fb;
+}
+
+.add-button {
+    float: right;
+    font-size: 30px;
+    color: white;
+}
+
+.add-button:hover {
+    color: #eb4d4b;
+    transition: 0.3s;
+}
