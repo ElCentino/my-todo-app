@@ -1,3 +1,9 @@
+:root {
+    --textcolor: rgb(83, 83, 83);
+    --bluecolor: rgb(57, 141, 252);
+    --redcolor: #eb4d4b;
+}
+
 * {
     margin: 0px;
     padding: 0px;
@@ -7,7 +13,7 @@
 
 .top-bar {
     width: 100%;
-    padding: 30px;
+    padding: 20px;
     background: #2f3640;
     border-left: #eb4d4b solid 5px;
 }
@@ -19,6 +25,11 @@
     font-size: 20px;
 }
 
+.todo-item:nth-child(2n) {
+    background: #dff9fb;
+    border-left: #eb4d4b 5px solid;
+}
+
 .todo-item {
     width: 100%;
     padding: 20px;
@@ -26,16 +37,20 @@
     font-family: 'Gaegu', cursive;
     font-size: 30px;
     transition: 0.3s;
-}
-
-.todo-item:nth-child(2n) {
-    background: #dff9fb;
-    border-left: #eb4d4b 15px solid;
+    color: var(--textcolor);
 }
 
 .button-pane {
     float: right;
     transition: 0.3s;
+}
+
+.delete-pane {
+    color: red;
+}
+
+.edit-pane {
+    color: rgb(0, 110, 255);
 }
 
 .edit-pane, .delete-pane {
@@ -47,18 +62,18 @@
     color: #eb4d4b;
 }
 
+.input-box:nth-child(2n) {
+    background: #dff9fb;
+}
+
 .input-box {
     width: 90%;
     padding: 10px;
     border: none;
     background: white;
-    color: black;
+    color: var(--textcolor);
     font-family: 'Gaegu', cursive;
     font-size: 30px;
-}
-
-.input-box:nth-child(2n) {
-    background: #dff9fb;
 }
 
 .add-button {

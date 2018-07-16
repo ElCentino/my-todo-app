@@ -2,6 +2,7 @@ import { Component } from 'react'
 import { TopBar } from './TopBar'
 import { TodoItem } from './TodoItem'
 import uuid from 'uuid/v4'
+import { ClearTodos } from './ClearTodos';
 
 export class Todo extends Component {
 
@@ -10,7 +11,8 @@ export class Todo extends Component {
 
         this.state = {
             todos: [],
-            editMode: false
+            editMode: false, 
+            errors: []
         }
     }
 
@@ -42,7 +44,7 @@ export class Todo extends Component {
                 ...this.state.todos,
                 {
                     id: uuid(),
-                    note: 'New Todo'
+                    note: 'New Todo ' + (this.state.todos.length + 1)
                 }
             ]
         })
@@ -55,7 +57,12 @@ export class Todo extends Component {
         let arr = this.state.todos
         arr.splice(i, 1)
 
-        this.setState({ todos : arr});
+        this.setState({ todos : arr })
+    }
+
+    clearTodos() {
+        localStorage.setItem('todos', JSON.stringify([]))
+        this.setState({ todos: [] })
     }
 
     render() {
@@ -68,6 +75,7 @@ export class Todo extends Component {
                         <TodoItem todos={this.state.todos} key={todo.id} index={count} todo={todo.note} editMode={this.state.editMode} remove={this.remove.bind(this)} update={this.update.bind(this)} toggleEditMode={this.toggleEditMode.bind(this)}/>
                     ))}
                 </ul>
+                <ClearTodos clear={this.clearTodos.bind(this)} todos={this.state.todos}/>
             </div>
         )
     }

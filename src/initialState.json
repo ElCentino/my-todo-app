@@ -1,0 +1,25 @@
+{
+    "todos": [
+        {
+            "id": 1,
+            "note": "Get some Milk"
+        },
+        {
+            "id": 2,
+            "note": "Get some Eggs"
+        },
+        {
+            "id": 3,
+            "note": "Get some Bread"
+        }
+    ],
+    "editMode": false,
+    "errors": [
+        {
+            "messsage": "Something went wrong"
+        },
+        {
+            "messsage": "Something stopped working"
+        }
+    ]
+}

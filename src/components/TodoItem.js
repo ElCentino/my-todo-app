@@ -16,15 +16,16 @@ export class TodoItem extends Component {
         this.Edit = this.Edit.bind(this)
         this.Save = this.Save.bind(this)
         this.Remove = this.Remove.bind(this)
+        this.SaveToStorage = this.SaveToStorage.bind(this)
     }
 
     componentDidMount() {
 
-        localStorage.setItem('todos', JSON.stringify(this.props.todos))
+        this.SaveToStorage()
     }
 
-    componentWillUnmount() {
 
+    SaveToStorage() {
         localStorage.setItem('todos', JSON.stringify(this.props.todos))
     }
 
@@ -38,6 +39,7 @@ export class TodoItem extends Component {
             })
 
             this.props.toggleEditMode()
+            this.SaveToStorage()
         }
     }
 
@@ -50,10 +52,15 @@ export class TodoItem extends Component {
         this.props.update(this.props.index, this.refs.inputdialog.value)
 
         this.props.toggleEditMode()
+        this.SaveToStorage()
     }
 
     Remove() {
-        this.props.remove(this.props.index)
+        if(!this.props.editMode) {
+            
+            this.props.remove(this.props.index)
+            this.SaveToStorage()
+        }
     }
 
     render() {
