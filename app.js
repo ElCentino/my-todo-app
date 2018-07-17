@@ -12,6 +12,6 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use("/statics", express.static('./public/'))
 
-app.use('/', homeRouter)
+app.use('/', homeRouter);
 
 module.exports = app
