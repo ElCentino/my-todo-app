@@ -1,8 +1,12 @@
 import { Component } from 'react'
 import { TopBar } from './TopBar'
 import { TodoItem } from './TodoItem'
+import { ClearTodos } from './ClearTodos'
 import uuid from 'uuid/v4'
-import { ClearTodos } from './ClearTodos';
+import { addTodo, addError } from '../actions'
+import storeFactory from '../store'
+import initialState from '../initialState'
+import { editTodo, removeTodo, clearTodos } from '../actions';
 
 export class Todo extends Component {
 
@@ -14,6 +18,8 @@ export class Todo extends Component {
             editMode: false, 
             errors: []
         }
+
+        this.store = storeFactory(initialState)
     }
 
     componentWillMount() {
@@ -27,10 +33,13 @@ export class Todo extends Component {
 
     toggleEditMode() {
 
+       this.store.dispactch(this.toggleEditMode())
        this.setState({ editMode: !this.state.editMode })
     }
 
     update(i, note) {
+
+        this.store.dispatch(editTodo(note))
 
         let arr = this.state.todos
         arr[i].note = note
@@ -38,6 +47,8 @@ export class Todo extends Component {
     }
 
     addNote() {
+
+        this.store.dispatch(addTodo('New Todo ' + (this.state.todos.length + 1)))
 
         this.setState({
             todos: [
@@ -54,6 +65,8 @@ export class Todo extends Component {
 
     remove(i) {
 
+        this.store.dispatch(removeTodo(i))
+
         let arr = this.state.todos
         arr.splice(i, 1)
 
@@ -61,6 +74,7 @@ export class Todo extends Component {
     }
 
     clearTodos() {
+        this.store.dispatch(clearTodos([]))
         localStorage.setItem('todos', JSON.stringify([]))
         this.setState({ todos: [] })
     }

@@ -28,7 +28,7 @@ export const editTodo = (index, data) => {
     }
 }
 
-export const clearTodo = () => {
+export const clearTodos = () => {
 
     return {
         type: C.CLEAR_TODO,
@@ -36,11 +36,11 @@ export const clearTodo = () => {
     }
 }
 
-export const toggleEditMode = mode => dispacth => {
+export const toggleEditMode = mode => getState => dispatch => {
 
-    dispacth({
+    dispatch({
         type: C.TOGGLE_EDIT_MODE,
-        payload: mode
+        
     })
 }
 
