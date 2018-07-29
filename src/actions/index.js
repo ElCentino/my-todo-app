@@ -36,11 +36,10 @@ export const clearTodos = () => {
     }
 }
 
-export const toggleEditMode = mode => getState => dispatch => {
+export const toggleEditMode = mode => (dispatch, getState) => {
 
     dispatch({
-        type: C.TOGGLE_EDIT_MODE,
-        
+        type: C.TOGGLE_EDIT_MODE
     })
 }
 

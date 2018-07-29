@@ -13,11 +13,14 @@ export const todos = (state = [], action) => {
 
         case C.EDIT_TODO: 
             let arr = state.slice()
-            arr[action.payload.index] = action.payload.data
+            arr[action.payload.index].note = action.payload.data
             return arr
 
         case C.REMOVE_TODO: 
-            return state.slice().splice(action.payload, 1)
+
+            let temp = state.slice()
+            temp.splice(action.payload, 1)
+            return temp
 
         case C.CLEAR_TODO:
             return []
@@ -47,11 +50,41 @@ export const errors = (state = [], action) => {
 
 export const editMode = (state = false, action) => {
 
-    return action.type === C.TOGGLE_EDIT_MODE ? !state : null
+    switch(action.type) {
+
+        case C.TOGGLE_EDIT_MODE:
+            return !state
+        default:
+            return state
+    }
+}
+
+export const editing = (state = false, action) => {
+
+    switch(action.type) {
+
+        case C.EDITING:
+            return !state
+        default: 
+            return state
+    }
+}
+
+export const saved = (state = true, action) => {
+
+    switch(action.type) {
+
+        case C.SAVED:
+            return !state
+        default:
+            return state
+    }
 }
 
 export default combineReducers({
     todos,
     errors,
-    editMode
+    editMode,
+    editing,
+    saved
 })
